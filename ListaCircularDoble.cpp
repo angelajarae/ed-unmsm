@@ -16,13 +16,13 @@ struct nodo{
 typedef struct nodo *TpLista;// crear tipo de dato struct nodo
 
 void menu(){
-system("CLS");
- cout<<"\n\t LISTA CIRCULARES DOBLES\n\n";
- cout<<"1.- Insertar nodo a lista doblemente enlazada"<<endl;
- cout<<"2.- Extraer nodos"<<endl;
- cout<<"0.- Salir "<<endl<<endl;
+	system("CLS");
+	cout<<"\n\t LISTA CIRCULARES DOBLES\n\n";
+	cout<<"1.- Insertar nodo a lista doblemente enlazada"<<endl;
+	cout<<"2.- Extraer nodos"<<endl;
+	cout<<"0.- Salir "<<endl<<endl;
 
- cout<<"Ingresar Opcion--->  "<<endl;
+	cout<<"Ingresar Opcion--->  "<<endl;
 }
 
 //**************GENERACION DE RANDOMS *************
@@ -53,8 +53,6 @@ int generarNumero() {
  		nuevo->nro=generarNumero();
 		nuevo->codigo=generarCodigo();
 
-		struct nodo *ant;
-		struct nodo *sgte;
 		nuevo->sgte=nuevo;
 		nuevo->ant=nuevo;
 
@@ -71,12 +69,12 @@ int generarNumero() {
 	}
 	else{
 		lista->ant->sgte= q;
-		q->sgte=lista;
 		q->ant=lista->ant;
+		q->sgte=lista;
 		lista->ant=q;
-
+		lista=q;
 	}
-	lista=q;
+	
   }
 
 
@@ -121,12 +119,10 @@ void EliminarInicio(TpLista &lista){
 	TpLista t=lista;
 	if(lista ==NULL){
 		cout<<"\nERROR: Lista vacia, no permite esta opcion"<<endl;
-		return;
 	}
 	else if(lista->sgte==lista){
 		lista=NULL;
 		cout<<"\nNodo eliminado Codigo: "<<t->codigo<<"Nr. "<<t->nro<<endl<<endl;
-		return;
 	}
 	else{
 		lista->ant->sgte= lista->sgte;
@@ -134,19 +130,19 @@ void EliminarInicio(TpLista &lista){
 		lista=lista->sgte;
 		t->sgte=NULL;
 		t->ant=NULL;
+		cout<<"\nNodo eliminado Codigo: "<<t->codigo<<"Nr. "<<t->nro<<endl<<endl;
 	}
-
-	
-	
-	
-	cout<<"\nNodo eliminado Codigo: "<<t->codigo<<"Nr. "<<t->nro<<endl<<endl;
-
+	return;
 }
 
 void EliminarPosicion(TpLista &lista, int pos){
 	TpLista p=lista;
 	int x=1;
 	bool flag=false;
+
+	if(lista ==NULL){
+		cout<<"\nERROR: Lista vacia, no permite esta opcion"<<endl;
+	}
 	if(pos==1){
 		EliminarInicio(lista);
 		return;
