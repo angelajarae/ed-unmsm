@@ -67,7 +67,7 @@ void desencolar(TpLista &cola){
 
 //**************FUNCIONES DE PILAS *************
 // POP extrae un nodo desde el inicio de una PILA
-TpLista pop(TpLista &lista){
+TpLista Pop(TpLista &lista){
 	TpLista t=lista;
 	if(lista == NULL){
 		cout<<"ERROR: Lista vacia.. no permite esta opcion"<<endl;
@@ -79,7 +79,7 @@ TpLista pop(TpLista &lista){
 	return t;
 }
 
-void push(TpLista &lista, TpLista q){
+void Push(TpLista &lista, TpLista q){
 	if(lista !=NULL){
 		q->sgte=lista;
 	}
@@ -113,10 +113,10 @@ void registrarSobre(TpLista &pilaSobres,int &nSobresRecibidos){
 		sobre->codigo=generarCodigo();
 		sobre->tipoEnvio=generarTipoEnvio();
         sobre->sgte=NULL;
-		push(pilaSobres,sobre);
+		Push(pilaSobres,sobre);
 	}
 	else{
-		cout<<"No se pueden recibir más sobres"<<endl;
+		cout<<"No se pueden recibir mï¿½s sobres"<<endl;
 	}
 
 	nSobresRecibidos++;
@@ -125,7 +125,7 @@ void registrarSobre(TpLista &pilaSobres,int &nSobresRecibidos){
 
 void distribuirSobres(TpLista &pilaSobres,TpLista &colaNacionales,TpLista &colaInternacionales){
     while(pilaSobres!=NULL){
-        TpLista sobre=pop(pilaSobres);
+        TpLista sobre=Pop(pilaSobres);
 
         if(sobre->tipoEnvio=="Nacional"){
             encolar(colaNacionales,sobre);
