@@ -7,40 +7,39 @@ using namespace std;
 struct nodo{
 	int nro;
 	struct nodo *sgte;
-
 };
 
-typedef struct nodo *TpLista;// crear tipo de dato struct nodo
+typedef struct nodo *TpLista;//Crea tipo de dato struct nodo
 
-TpLista dir =NULL;
- void InsertarInicio(TpLista &lista, int a){
- 	TpLista q=NULL;
-	 q = new(struct nodo);
-	q->nro = a;
+
+//Funciones de lista enlazada simple
+TpLista CrearNodo(int numero){
+	TpLista q=NULL;
+
+	q = new(struct nodo);
+	q->nro = numero;
+	q->sgte=NULL;
+
+	return q;
+}
+void InsertarInicio(TpLista &lista, TpLista nodo){
+	TpLista q=nodo;
 	q->sgte = lista;
 	lista=q;
+}
+void InsertarFinal(TpLista &lista, TpLista nodo){
+	TpLista q=nodo, p=lista;
 
- }
- void InsertarFinal(TpLista &lista, int a){
- 	TpLista q=NULL, p=lista;
-	// crear nodo
-	q = new(struct nodo);
-	q->nro = a;
-	q->sgte = NULL;
-	// Insertarlo
-
-    if(lista==NULL){
-        lista=q;
-    }
-    else{
-        while(p->sgte != NULL)
-		p=p->sgte;
-        p->sgte=q;
-    }
-
-
- }
-
+	if(lista==NULL){
+		lista=q;
+	}
+	else{
+		while(p->sgte != NULL){
+			p=p->sgte;
+		}
+		p->sgte=q;
+	}
+}
 void VerLista(TpLista lista)
 {
 	int i=0;
@@ -51,30 +50,20 @@ void VerLista(TpLista lista)
 	}
 
 }
+//
 
-void menu(){
-system("CLS");
- cout<<"\n\t LAB 2\n\n";
- cout<<"1.- Crear nodo "<<endl;
- cout<<"2.- Mostrar lista "<<endl;
- cout<<"0.- Salir "<<endl<<endl;
 
- cout<<"Ingresar Opcion--->  "<<endl;
-}
-
-void crearNodo(TpLista &lista){
+//Opciones de menú
+void insertarNodo(TpLista &lista){
     int numeroAl = -99 + (rand() % (99 - (-99) + 1));
 
     if(numeroAl>0){
-        InsertarFinal(lista,numeroAl);
+        InsertarFinal(lista,CrearNodo(numeroAl));
     }
     else{
-        InsertarInicio(lista,numeroAl);
+        InsertarInicio(lista,CrearNodo(numeroAl));
     }
-    VerLista(lista);
-
 }
-
 void mostrarLista(TpLista lista){
     int nNodos=0;
     int mayor = lista->nro, menor = lista->nro, posMayor = 1, posMenor = 1, suma = 0;
@@ -101,23 +90,33 @@ void mostrarLista(TpLista lista){
 	cout<<"Menor: "<<menor<<endl;
 	cout<<"Posicion menor: "<<posMenor<<endl;
 }
+//
+
+
+void menu(){
+	system("CLS");
+	cout<<"\nLAB 2: Inserta nodo al inicio o final segun signo.\n\n";
+
+	cout<<"1.- Insertar nodo "<<endl;
+	cout<<"2.- Mostrar lista "<<endl;
+	cout<<"0.- Salir "<<endl<<endl;
+
+	cout<<"Ingresar Opcion--->  "<<endl;
+}
 
 
 int main() {
-
-
-	int n,t;
-	TpLista lista=NULL;// variable gusrada el inicio de la lista
+	TpLista lista=NULL;
     srand(static_cast<unsigned int>(time(0)));
 	int opc;
-
 
 	do{
 		menu();
 		cin>>opc;
 		switch(opc){
 			case 1:{
-                crearNodo(lista);
+                insertarNodo(lista);
+				VerLista(lista);
                 system("pause");
 				break;
 				}
