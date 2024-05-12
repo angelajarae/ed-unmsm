@@ -32,7 +32,7 @@ TpLista  crearNodo(){
 }
 
 /*Funciones Lista circular simple*****************/
-void mostrarLista(TpLista lista){
+void VerLista(TpLista lista){
 	TpLista t=lista;
 	do{
 		cout<<"codigo = "<<t->nro<<" peso= "<<t->peso<<" --> ";
@@ -94,7 +94,7 @@ void menu(){
      system("CLS");
      cout<<"\n\t LAB Ordenamieto Burbuja\n\n";
      cout<<"1.- Registrar paquetes "<<endl;
-     cout<<"2.- Ordenar paquetes según peso "<<endl;
+     cout<<"2.- Ordenar paquetes segï¿½n peso "<<endl;
      cout<<"0.- Salir "<<endl<<endl;
 
      cout<<"Ingresar Opcion--->  "<<endl;
@@ -113,7 +113,7 @@ int main() {
 		switch(opc){
 			case 1:{
                 insertarFinal(lista);
-                mostrarLista(lista);
+                VerLista(lista);
                 cout<<"\n\nCantidad de paquetes:"<<nPaquetes;
                 cout<<"\nPeso total:"<<pesoTotal;
                 cout<<"\nPeso promedio:"<<(float)pesoTotal/nPaquetes<<endl;
@@ -123,7 +123,7 @@ int main() {
 
 			case 2:{
                 ordenarPorPeso(lista);
-                mostrarLista(lista);
+                VerLista(lista);
 				system("pause");
 				break;
             }

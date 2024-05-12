@@ -64,7 +64,7 @@ void insertarNodo(TpLista &lista){
         InsertarInicio(lista,CrearNodo(numeroAl));
     }
 }
-void mostrarLista(TpLista lista){
+void VerLista(TpLista lista){
     int nNodos=0;
     int mayor = lista->nro, menor = lista->nro, posMayor = 1, posMenor = 1, suma = 0;
 
@@ -123,7 +123,7 @@ int main() {
 
 			case 2:{
 			    VerLista(lista);
-                mostrarLista(lista);
+                VerLista(lista);
                 system("pause");
 				break;
 				}
