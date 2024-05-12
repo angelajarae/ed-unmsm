@@ -198,9 +198,8 @@ void menu(){
 	cout<<"Ingresar Opcion--->  "<<endl;
 }
 int main() {
-
-	int posicion,opc, busca, reemp;
-	TpLista lista=NULL;// variable gusrada el inicio de la lista
+	int opc;
+	TpLista lista=NULL;
 
 	do{
 		menu();
